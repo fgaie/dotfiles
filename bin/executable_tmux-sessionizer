@@ -1,0 +1,24 @@
+#!/usr/bin/env sh
+
+if [[ $# -eq 1 ]]; then
+  selected="$1"
+else
+  selected=$(~/bin/project-locator.py | sed "s!$HOME!~!g" | fzf-tmux -p | sed "s!~!$HOME!g")
+fi
+
+if [[ -z "$selected" ]]; then
+  exit 0
+fi
+
+directory=$(readlink -f "$selected")
+name=$(basename "$selected" | tr '.' '_')
+
+mkdir -p "$directory"
+
+if [[ -z "$TMUX" ]]; then
+  tmux new-session -A -s "$name" -c "$directory"
+fi
+
+tmux new-session -d -s "$name" -c "$directory"
+tmux switch-client -t "$name"
+
