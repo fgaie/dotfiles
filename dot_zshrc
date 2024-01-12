@@ -1,0 +1,59 @@
+src() {
+    [ -r "$1" ] && source "$1" > /dev/null 2> /dev/null
+}
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt autocd
+
+alias ls='exa'
+alias find='fd'
+alias grep='rg'
+
+alias ll='ls -al'
+alias fzf='fzf-tmux -p'
+
+alias vimdiff='nvim -d'
+
+# oh-my-zsh
+plugins=(colored-man-pages)
+
+# powerlevel10k
+source ~/.p10k.zsh
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+
+# FZF
+fzf_base_command="fd -L --color=always"
+fzf_base_options="--ansi"
+
+export FZF_DEFAULT_COMMAND="$fzf_base_command --type file"
+export FZF_DEFAULT_OPTS=$fzf_base_options
+
+export FZF_CTRL_T_COMMAND="$fzf_base_command --type file"
+export FZF_CTRL_T_OPTS=$fzf_base_options
+
+export FZF_ALT_C_COMMAND="$fzf_base_command --type directory"
+export FZF_ALT_C_OPTS=$fzf_base_options
+
+export FZF_TMUX=1
+export FZF_TMUX_OPTS="-p"
+
+# cmake config
+export CMAKE_GENERATOR="Ninja"
+export CMAKE_EXPORT_COMPILE_COMMANDS="ON"
+
+src /usr/share/fzf/key-bindings.zsh
+src /usr/share/fzf/completion.zsh
+
+# opam config
+src /home/flo/.opam/opam-init/init.zsh
+
+# npm config
+src /usr/share/nvm/init-nvm.sh
+
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"

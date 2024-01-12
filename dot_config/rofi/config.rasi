@@ -1,0 +1,10 @@
+// -*- mode: css -*- vim: set ft=css:
+
+configuration {
+    cycle: true;
+    display-combi: "🔍";
+    display-drun: "";
+    display-ssh: "@";
+}
+
+@theme "theme"

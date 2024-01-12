@@ -1,0 +1,67 @@
+// -*- mode: css -*- vim: set ft=css:
+
+* {
+    background-color: transparent;
+    text-color: inherit;
+    font: inherit;
+}
+
+window {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    font: "JetBrainsMono Nerd Font 14";
+}
+
+mainbox {
+    background-color: #19172499;
+    text-color: #e0def4;
+    spacing: 20px;
+}
+
+inputbar {
+    background-color: #1f1d2e;
+    margin: 8% 35%;
+    padding: 20px;
+    border-radius: 20px;
+    children: [ prompt, entry ];
+    spacing: 10px;
+}
+
+prompt {
+    vertical-align: 0.5;
+}
+
+entry {
+    placeholder: "Search";
+}
+
+listview {
+    margin: 0 10% 10% 10%;
+    fixed-height: true;
+    fixed-columns: true;
+    columns: 7;
+    lines: 4;
+}
+
+element {
+    orientation: vertical;
+    padding: 20px;
+    spacing: 20px;
+    children: [ element-icon, element-text ];
+    border-radius: 20px;
+}
+
+element-text {
+    font: "JetBrainsMono Nerd Font 10";
+    horizontal-align: 0.5;
+}
+
+element-icon {
+    size: 3em;
+}
+
+element.selected {
+    background-color: #21202e;
+    text-color: #e0def4;
+}

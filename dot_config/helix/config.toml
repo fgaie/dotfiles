@@ -1,0 +1,15 @@
+theme = "rose_pine"
+
+[editor]
+true-color = true
+scrolloff = 10
+cursorline = true
+line-number = "relative"
+
+[editor.lsp]
+display-inlay-hints = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "hidden"

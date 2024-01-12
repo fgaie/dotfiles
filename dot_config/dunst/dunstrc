@@ -1,0 +1,9 @@
+[global]
+font="JetBrainsMono Nerd Font"
+background="#191724"
+foreground="#e0def4"
+frame_color="#524f67"
+separator_color="frame"
+
+[urgency_critical]
+frame_color="#eb6f92"

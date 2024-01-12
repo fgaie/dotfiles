@@ -1,0 +1,23 @@
+# these two fail to fetch and build
+use-grammars = { except = [ "gemini", "purescript" ] }
+
+[language-server.uiua-lsp]
+command = "uiua"
+args = ["lsp"]
+
+[[language]]
+name = "uiua"
+scope = "source.uiua"
+injection-regex = "uiua"
+file-types = ["ua"]
+roots = []
+auto-format = true
+comment-token = "#"
+language-servers = [ "uiua-lsp" ]
+indent = { tab-width = 2, unit = "  " }
+shebangs = ["uiua"]
+
+[[grammar]]
+name = "uiua"
+source.git = "https://github.com/shnarazk/tree-sitter-uiua"
+source.rev = "c917a6cb115154a6b93b4812b50d7630565f4470"
