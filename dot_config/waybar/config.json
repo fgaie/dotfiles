@@ -1,0 +1,45 @@
+{
+  "layer": "top",
+  "margin-top": 10,
+  "margin-left": 10,
+  "margin-right": 10,
+  "margin-bottom": 0,
+  "reload-style-on-change": true,
+  "modules-left": [
+    "sway/workspaces",
+    "sway/mode"
+  ],
+  "modules-center": [
+    "sway/window"
+  ],
+  "modules-right": [
+    "network",
+    "cpu",
+    "memory",
+    "disk",
+    "battery",
+    "sway/language",
+    "clock"
+  ],
+  "network": {
+    "format": "{essid}"
+  },
+  "sway/window": {
+    "max-length": 50
+  },
+  "cpu": {
+    "format": "CPU {usage}%"
+  },
+  "memory": {
+    "format": "RAM {percentage}%"
+  },
+  "disk": {
+    "format": "/ {percentage_used}%"
+  },
+  "sway/language": {
+    "format": "{short} {variant}"
+  },
+  "clock": {
+    "format": "{:%Y-%m-%d %R}"
+  }
+}

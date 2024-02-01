@@ -1,6 +1,3 @@
-# these two fail to fetch and build
-use-grammars = { except = [ "gemini", "purescript" ] }
-
 [language-server.uiua-lsp]
 command = "uiua"
 args = ["lsp"]
@@ -21,3 +18,10 @@ shebangs = ["uiua"]
 name = "uiua"
 source.git = "https://github.com/shnarazk/tree-sitter-uiua"
 source.rev = "c917a6cb115154a6b93b4812b50d7630565f4470"
+
+[[language]]
+name = "bash"
+file-types = ["config", "sh", "bash", "zsh", ".bash_login", ".bash_logout",
+  ".bash_profile", ".bashrc", ".profile", ".zshenv", ".zlogin", ".zlogout",
+  ".zprofile", ".zshrc", "APKBUILD", "PKGBUILD", "eclass", "ebuild", "bazelrc",
+  ".bash_aliases"]

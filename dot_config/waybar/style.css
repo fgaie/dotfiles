@@ -1,0 +1,72 @@
+@import "./rose-pine.css";
+
+* {
+  border: none;
+  border-radius: 0;
+  font-family: JetBrainsMono NF, sans-serif;
+  font-size: 13px;
+  min-height: 0;
+
+  background: transparent;
+  color: inherit;
+}
+
+window#waybar {
+  background: alpha(@base, 0.9);
+  color: @text;
+}
+
+#workspaces button {
+  background: @surface;
+  color: @subtle;
+  border: none;
+}
+
+#workspaces button.focused {
+  background: @overlay;
+  color: @text;
+}
+
+#window {
+  background: @surface;
+  color: @text;
+}
+
+label {
+  padding: 5px 10px;
+}
+
+#network {
+  color: @love;
+  background: alpha(@love, 0.07)
+}
+
+#cpu {
+  color: @gold;
+  background: alpha(@gold, 0.07)
+}
+
+#memory {
+  color: @rose;
+  background: alpha(@rose, 0.07)
+}
+
+#disk {
+  color: @pine;
+  background: alpha(@pine, 0.07)
+}
+
+#battery {
+  color: @foam;
+  background: alpha(@foam, 0.07)
+}
+
+#language {
+  color: @iris;
+  background: alpha(@iris, 0.07)
+}
+
+#clock {
+  color: @love;
+  background: alpha(@love, 0.07)
+}

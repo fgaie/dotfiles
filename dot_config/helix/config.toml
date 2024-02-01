@@ -1,15 +1,33 @@
-theme = "rose_pine"
+theme = "flo"
 
 [editor]
-true-color = true
 scrolloff = 10
-cursorline = true
 line-number = "relative"
+cursorline = true
+true-color = true
+rulers = [80]
+color-modes = true
+
+[editor.statusline]
+left = ["mode", "spinner", "version-control"]
+center = ["file-name", "read-only-indicator", "file-modification-indicator"]
+right = ["diagnostics", "workspace-diagnostics", "register", "position",
+   "position-percentage", "file-encoding"]
 
 [editor.lsp]
 display-inlay-hints = true
+display-messages = true
 
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
-select = "hidden"
+select = "underline"
+
+[editor.whitespace.render]
+space = "all"
+nbsp = "all"
+tab = "all"
+
+[editor.indent-guides]
+render = true
+character = "╎"
