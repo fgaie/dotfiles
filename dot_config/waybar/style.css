@@ -11,6 +11,11 @@
   color: inherit;
 }
 
+tooltip {
+  background: alpha(@surface, 0.9);
+  color: @text;
+}
+
 window#waybar {
   background: alpha(@base, 0.9);
   color: @text;
