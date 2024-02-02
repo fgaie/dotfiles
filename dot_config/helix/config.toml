@@ -22,12 +22,3 @@ display-messages = true
 insert = "bar"
 normal = "block"
 select = "underline"
-
-[editor.whitespace.render]
-space = "all"
-nbsp = "all"
-tab = "all"
-
-[editor.indent-guides]
-render = true
-character = "╎"
