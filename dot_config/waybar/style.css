@@ -16,7 +16,7 @@ tooltip {
   color: @text;
 }
 
-window#waybar {
+#waybar {
   background: alpha(@base, 0.9);
   color: @text;
 }
@@ -35,6 +35,10 @@ window#waybar {
 #window {
   background: @surface;
   color: @text;
+}
+
+#waybar.empty #window {
+  background: transparent;
 }
 
 label {
