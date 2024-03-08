@@ -98,7 +98,7 @@
 
 (use-package faces
   :custom-face
-  (default ((t (:family "JetBrainsMono Nerd Font")))))
+  (default ((t (:family "Spleen 32x64")))))
 
 (use-package filelock
   :no-require t
