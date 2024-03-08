@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 src() {
     [ -r "$1" ] && source "$1" > /dev/null 2> /dev/null
 }
@@ -24,8 +26,9 @@ alias vimdiff='nvim -d'
 plugins=(colored-man-pages)
 
 # powerlevel10k
-source ~/.p10k.zsh
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+src ~/.p10k.zsh
+src ~/powerlevel10k/powerlevel10k.zsh-theme
+src /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # FZF
 fzf_base_command="fd -L --color=always"

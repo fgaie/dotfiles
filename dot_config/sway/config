@@ -28,10 +28,10 @@ output * adaptive_sync on
 
 ### Input configuration
 input type:keyboard {
-    # xkb_layout us-flo,fr
-    # xkb_variant ,bepo
-    xkb_layout us,us,fr
-    xkb_variant dvp,,bepo
+    xkb_layout us-flo,fr
+    xkb_variant ,bepo
+    # xkb_layout us,us,fr
+    # xkb_variant dvp,,bepo
     xkb_options grp:shifts_toggle
 }
 

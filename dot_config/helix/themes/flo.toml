@@ -1,5 +1,1 @@
 inherits = "rose_pine"
-
-"ui.virtual.indent-guide" = { fg = "highlight_med" }
-"ui.virtual.whitespace" = { fg = "highlight_med" }
-
