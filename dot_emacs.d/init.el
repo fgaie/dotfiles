@@ -98,7 +98,7 @@
 
 (use-package faces
   :custom-face
-  (default ((t (:family "Spleen 32x64")))))
+  (default ((t (:family "Iosevka Term SS01")))))
 
 (use-package filelock
   :no-require t

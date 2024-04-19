@@ -10,7 +10,7 @@ window {
     width: 100%;
     height: 100%;
     background-color: transparent;
-    font: "Spleen 32x64 14";
+    font: "Iosevka Term SS01 14";
 }
 
 mainbox {

@@ -50,6 +50,9 @@ export FZF_TMUX_OPTS="-p"
 export CMAKE_GENERATOR="Ninja"
 export CMAKE_EXPORT_COMPILE_COMMANDS="ON"
 
+# editor
+export EDITOR="hx"
+
 src /usr/share/fzf/key-bindings.zsh
 src /usr/share/fzf/completion.zsh
 
