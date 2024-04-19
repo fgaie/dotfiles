@@ -25,3 +25,24 @@ file-types = ["config", "sh", "bash", "zsh", ".bash_login", ".bash_logout",
   ".bash_profile", ".bashrc", ".profile", ".zshenv", ".zlogin", ".zlogout",
   ".zprofile", ".zshrc", "APKBUILD", "PKGBUILD", "eclass", "ebuild", "bazelrc",
   ".bash_aliases"]
+
+[language-server.jdtls]
+command = "jdtls"
+args = [
+  "-configuration", "/home/flo/.cache/jdtls/config",
+  "-data", "/home/flo/.cache/jdtls/workspace",
+]
+
+[[language]]
+name = "java"
+scope = "source.java"
+injection-regex = "java"
+file-types = ["java"]
+roots = ["pom.xml", "build.gradle"]
+indent = { tab-width = 4, unit = "    " }
+language-servers = ["jdtls"]
+
+[[grammar]]
+name = "java"
+source.git = "https://github.com/tree-sitter/tree-sitter-java"
+source.rev = "09d650def6cdf7f479f4b78f595e9ef5b58ce31e"
