@@ -28,16 +28,16 @@ output * adaptive_sync on
 
 ### Input configuration
 
-# Laptop
-input "1267:12631:ASUE1409:00_04F3:3157_Keyboard" {
-    xkb_layout us,fr
-    xkb_variant dvp,bepo
+# all
+input "type:keyboard" {
+    xkb_layout us-flo,fr
+    xkb_variant ,bepo
 
     xkb_options grp:shifts_toggle
 }
 
-# Desktop / rest
-input "type:keyboard" {
+# desktop
+input "1240:61139:Massdrop_Inc._ALT_Keyboard" {
     xkb_layout us,fr
     xkb_variant dvp,bepo
 
