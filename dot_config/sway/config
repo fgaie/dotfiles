@@ -27,15 +27,24 @@ output * bg ~/Pictures/wp.* fill
 output * adaptive_sync on
 
 ### Input configuration
-input type:keyboard {
-    xkb_layout us-flo,fr
-    xkb_variant ,bepo
-    # xkb_layout us,us,fr
-    # xkb_variant dvp,,bepo
+
+# Laptop
+input "1267:12631:ASUE1409:00_04F3:3157_Keyboard" {
+    xkb_layout us,fr
+    xkb_variant dvp,bepo
+
     xkb_options grp:shifts_toggle
 }
 
-input type:touchpad {
+# Desktop / rest
+input "type:keyboard" {
+    xkb_layout us,fr
+    xkb_variant dvp,bepo
+
+    xkb_options grp:shifts_toggle
+}
+
+input "type:touchpad" {
     tap enabled
 }
 
@@ -51,16 +60,16 @@ floating_modifier $mod normal
 
 ### Key bindings
 bindsym --to-code {
-    $mod+Space exec $menu
+    $mod+space exec $menu
 
-    $mod+Return exec $term
-    $mod+e exec $editor
-    $mod+b exec $browser
+    $mod+return exec $term
+    $mod+period exec $editor
+    $mod+x exec $browser
 
-    $mod+w kill
+    $mod+comma kill
 
-    $mod+o reload
-    $mod+Mod1+x exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    $mod+r reload
+    $mod+Mod1+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
     # Move your focus around
     $mod+$left focus left
@@ -75,28 +84,28 @@ bindsym --to-code {
     $mod+Shift+$right move right
 
     # Workspaces:
-    $mod+1 workspace number 1
-    $mod+2 workspace number 2
-    $mod+3 workspace number 3
-    $mod+4 workspace number 4
-    $mod+5 workspace number 5
-    $mod+6 workspace number 6
-    $mod+7 workspace number 7
-    $mod+8 workspace number 8
-    $mod+9 workspace number 9
-    $mod+0 workspace number 10
+    $mod+ampersand workspace number 1
+    $mod+bracketleft workspace number 2
+    $mod+braceleft workspace number 3
+    $mod+braceright workspace number 4
+    $mod+parenleft workspace number 5
+    $mod+equal workspace number 6
+    $mod+asterisk workspace number 7
+    $mod+parenright workspace number 8
+    $mod+plus workspace number 9
+    $mod+bracketright workspace number 10
 
     # Move focused container to workspace
-    $mod+Shift+1 move container to workspace number 1
-    $mod+Shift+2 move container to workspace number 2
-    $mod+Shift+3 move container to workspace number 3
-    $mod+Shift+4 move container to workspace number 4
-    $mod+Shift+5 move container to workspace number 5
-    $mod+Shift+6 move container to workspace number 6
-    $mod+Shift+7 move container to workspace number 7
-    $mod+Shift+8 move container to workspace number 8
-    $mod+Shift+9 move container to workspace number 9
-    $mod+Shift+0 move container to workspace number 10
+    $mod+percent move container to workspace number 1
+    $mod+7 move container to workspace number 2
+    $mod+5 move container to workspace number 3
+    $mod+3 move container to workspace number 4
+    $mod+1 move container to workspace number 5
+    $mod+9 move container to workspace number 6
+    $mod+0 move container to workspace number 7
+    $mod+2 move container to workspace number 8
+    $mod+4 move container to workspace number 9
+    $mod+6 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 
@@ -108,15 +117,12 @@ bindsym --to-code {
     # $mod+v splitv
 
     # Switch the current container between different layout styles
-    $mod+r layout stacking
-    $mod+y layout tabbed
-    $mod+d layout toggle split
-    $mod+f fullscreen
+    $mod+u fullscreen
     $mod+Shift+space floating toggle
 
     # Scratchpad:
-    $mod+Shift+minus move scratchpad
-    $mod+minus scratchpad show
+    $mod+8 move scratchpad
+    $mod+exclam scratchpad show
 
     XF86AudioPlay exec playerctl play-pause
     XF86AudioPrev exec playerctl previous
