@@ -2,7 +2,6 @@
 
 waybar &
 keepassxc &
-syncthing &
+syncthing --no-browser &
 mpd &
 /usr/lib/kdeconnectd &
-emacs --daemon &
