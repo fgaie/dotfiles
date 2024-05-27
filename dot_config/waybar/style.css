@@ -45,6 +45,11 @@ label {
   padding: 5px 10px;
 }
 
+#mpd.playing {
+  color: @iris;
+  background: alpha(@love, 0.07)
+}
+
 #network {
   color: @love;
   background: alpha(@love, 0.07)

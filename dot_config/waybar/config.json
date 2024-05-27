@@ -13,6 +13,7 @@
     "sway/window"
   ],
   "modules-right": [
+    "mpd",
     "network",
     "cpu",
     "memory",
@@ -21,6 +22,15 @@
     "sway/language",
     "clock"
   ],
+  "mpd": {
+    "format": "{title}",
+    "format-disconnected": "",
+    "tooltip-format": "{album} - {artist} - {title}",
+    "on-click": "mpc toggle",
+    "on-click-right": "mpc stop",
+    "on-scroll-up": "volume +2",
+    "on-scroll-down": "volume -2",
+  },
   "network": {
     "format": "{essid}"
   },
