@@ -23,13 +23,18 @@
     "clock"
   ],
   "mpd": {
-    "format": "{title}",
+    "format": "{stateIcon}{artist} - {title}",
+    "format-stopped": "",
     "format-disconnected": "",
-    "tooltip-format": "{album} - {artist} - {title}",
+    "tooltip-format": "mpc: {artist} - {album} - {title} [{songPosition}/{queueLength}] ({volume}%)",
     "on-click": "mpc toggle",
     "on-click-right": "mpc stop",
-    "on-scroll-up": "volume +2",
-    "on-scroll-down": "volume -2",
+    "on-scroll-up": "mpc volume +2",
+    "on-scroll-down": "mpc volume -2",
+    "state-icons": {
+      "playing": "",
+      "paused": "(P) "
+    }
   },
   "network": {
     "format": "{essid}"

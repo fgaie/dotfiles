@@ -35,15 +35,10 @@
 (use-package blackout
   :straight t)
 
-(use-package battery
-  :unless (string-search "N/A%" (let ((inhibit-message t)) (battery)))
-  :config
-  (display-battery-mode))
-
 (use-package buffer
   :no-require t
   :custom
-  ; 8
+  ;; 8
   (tab-width 4))
 
 (use-package calendar
@@ -319,13 +314,6 @@
   ;; nil
   (ring-bell-function #'ignore))
 
-(use-package time
-  :custom
-  ;; nil
-  (display-time-24hr-format t)
-  :config
-  (display-time-mode))
-
 (use-package tool-bar
   :config
   (tool-bar-mode 0))
@@ -395,15 +383,24 @@
   (push #'cape-dabbrev completion-at-point-functions)
   (push #'cape-file    completion-at-point-functions))
 
-(use-package catppuccin-theme
-  :straight t
-  :custom-face
-  (ansi-color-red ((t (:forgeground "#000000" :background "#f38ba8"))))
-  (ansi-color-green ((t (:forgeground "#000000" :background "#a6e3a1"))))
-  :custom
-  (catppuccin-flavor 'mocha)
+;; (use-package catppuccin-theme
+;;   :straight t
+;;   :custom-face
+;;   (ansi-color-red ((t (:forgeground "#000000" :background "#f38ba8"))))
+;;   (ansi-color-green ((t (:forgeground "#000000" :background "#a6e3a1"))))
+;;   :custom
+;;   (catppuccin-flavor 'mocha)
+;;   :config
+;;   (load-theme 'catppuccin t))
+
+(use-package autothemer
+  :straight t)
+
+(use-package rose-pine-theme
+  :straight (rose-pine-theme :type git :host github :repo "konrad1977/pinerose-emacs")
+  :after autothemer
   :config
-  (load-theme 'catppuccin t))
+  (load-theme 'rose-pine t))
 
 (use-package consult
   :straight t
@@ -715,9 +712,6 @@
 
 (use-package yasnippet
   :straight t
-  :blackout yas-minnor-mode
-  :custom
-  ;; '("/home/flo/.emacs.d/snippets")
-  (yas-snippet-dirs '("~/Snippets"))
+  :blackout yas-minor-mode
   :config
   (yas-global-mode))

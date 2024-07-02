@@ -45,7 +45,7 @@ label {
   padding: 5px 10px;
 }
 
-#mpd.playing {
+#mpd {
   color: @iris;
   background: alpha(@love, 0.07)
 }

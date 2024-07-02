@@ -46,3 +46,11 @@ language-servers = ["jdtls"]
 name = "java"
 source.git = "https://github.com/tree-sitter/tree-sitter-java"
 source.rev = "09d650def6cdf7f479f4b78f595e9ef5b58ce31e"
+
+[language-server.chicken-lsp-server]
+command = "nc"
+args = ["localhost", "6008"]
+
+[[language]]
+name = "scheme"
+language-servers = ["chicken-lsp-server"]
