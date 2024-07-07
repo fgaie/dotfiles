@@ -4,4 +4,6 @@ waybar &
 keepassxc &
 syncthing --no-browser &
 mpd &
-/usr/lib/kdeconnectd &
+mpDris2 &
+kdeconnectd &
+dunst &
