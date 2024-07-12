@@ -15,10 +15,9 @@ set $right p
 
 # Apps
 set $term kitty tmux
-set $editor emacsclient -c -a ''
+set $editor kitty tmux -c hx
 set $browser firefox
 set $menu rofi -show combi -combi-modes "drun,ssh" -modes combi
-# set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
 exec ~/bin/startup
 exec $term
@@ -28,16 +27,8 @@ output * adaptive_sync on
 
 ### Input configuration
 
-# all
+{{- if eq .chezmoi.hostname "desk" }}
 input "type:keyboard" {
-    xkb_layout us-flo,fr
-    xkb_variant ,bepo
-
-    xkb_options grp:shifts_toggle
-}
-
-# desktop
-input "1240:61139:Massdrop_Inc._ALT_Keyboard" {
     xkb_layout us,fr
     xkb_variant dvp,bepo
     # xkb_layout us,us,fr
@@ -45,12 +36,20 @@ input "1240:61139:Massdrop_Inc._ALT_Keyboard" {
 
     xkb_options grp:shifts_toggle
 }
+{{- else }}
+input "type:keyboard" {
+    xkb_layout us-flo,fr
+    xkb_variant ,bepo
+
+    xkb_options grp:shifts_toggle
+}
+{{- end }}
 
 input "type:touchpad" {
     tap enabled
 }
 
-workspace number 10 output "DP-1"
+workspace 10 output "DP-1"
 
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
@@ -63,71 +62,77 @@ workspace number 10 output "DP-1"
 floating_modifier $mod normal
 
 ### Key bindings
-bindsym --to-code {
-    $mod+space exec $menu
+bindcode {
+    # comments based on qwerty layout
+    # space
+    $mod+65 exec $menu
 
-    $mod+return exec $term
-    $mod+period exec $editor
-    $mod+x exec $browser
+    # enter
+    $mod+36 exec $term
+    # e
+    $mod+26 exec $editor
+    # b
+    $mod+56 exec $browser
 
-    $mod+comma kill
+    # w
+    $mod+25 kill
 
-    $mod+r reload
-    $mod+Mod1+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    # q
+    $mod+27 reload
+    # x
+    $mod+Mod1+53 exit
 
-    # Move your focus around
-    $mod+$left focus left
-    $mod+$down focus down
-    $mod+$up focus up
-    $mod+$right focus right
+    # j
+    $mod+44 focus left
+    # k
+    $mod+45 focus down
+    # l
+    $mod+46 focus up
+    # ;
+    $mod+47 focus right
 
     # Move the focused window with the same, but add Shift
-    $mod+Shift+$left move left
-    $mod+Shift+$down move down
-    $mod+Shift+$up move up
-    $mod+Shift+$right move right
+    $mod+Shift+44 move left
+    $mod+Shift+45 move down
+    $mod+Shift+46 move up
+    $mod+Shift+47 move right
 
     # Workspaces:
-    $mod+ampersand workspace number 1
-    $mod+bracketleft workspace number 2
-    $mod+braceleft workspace number 3
-    $mod+braceright workspace number 4
-    $mod+parenleft workspace number 5
-    $mod+equal workspace number 6
-    $mod+asterisk workspace number 7
-    $mod+parenright workspace number 8
-    $mod+plus workspace number 9
-    $mod+bracketright workspace number 10
+    # 1234567890-
+    $mod+10 workspace 1
+    $mod+11 workspace 2
+    $mod+12 workspace 3
+    $mod+13 workspace 4
+    $mod+14 workspace 5
+    $mod+15 workspace 6
+    $mod+16 workspace 7
+    $mod+17 workspace 8
+    $mod+18 workspace 9
+    $mod+19 workspace 10
+    $mod+20 scratchpad show
 
     # Move focused container to workspace
-    $mod+percent move container to workspace number 1
-    $mod+7 move container to workspace number 2
-    $mod+5 move container to workspace number 3
-    $mod+3 move container to workspace number 4
-    $mod+1 move container to workspace number 5
-    $mod+9 move container to workspace number 6
-    $mod+0 move container to workspace number 7
-    $mod+2 move container to workspace number 8
-    $mod+4 move container to workspace number 9
-    $mod+6 move container to workspace number 10
-    # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
-
-    # Layout stuff:
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
-    # $mod+h splith
-    # $mod+v splitv
+    # 1234567890-
+    $mod+shift+10 move container to workspace 1
+    $mod+shift+11 move container to workspace 2
+    $mod+shift+12 move container to workspace 3
+    $mod+shift+13 move container to workspace 4
+    $mod+shift+14 move container to workspace 5
+    $mod+shift+15 move container to workspace 6
+    $mod+shift+16 move container to workspace 7
+    $mod+shift+17 move container to workspace 8
+    $mod+shift+18 move container to workspace 9
+    $mod+shift+19 move container to workspace 10
+    $mod+shift+20 move scratchpad
 
     # Switch the current container between different layout styles
-    $mod+u fullscreen
-    $mod+Shift+space floating toggle
+    # f
+    $mod+41 fullscreen
+    # space
+    $mod+Shift+65 floating toggle
+}
 
-    # Scratchpad:
-    $mod+8 move scratchpad
-    $mod+exclam scratchpad show
-
+bindsym {
     XF86AudioPlay exec playerctl play-pause
     XF86AudioPrev exec playerctl previous
     XF86AudioNext exec playerctl next
