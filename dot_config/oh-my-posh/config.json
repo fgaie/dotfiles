@@ -1,0 +1,186 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
+  "final_space": false,
+  "shell_integration": true,
+  "enable_cursor_positioning": true,
+  "transient_prompt": {
+    "foreground": "darkGray",
+    "template": "> "
+  },
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "path",
+          "style": "plain",
+          "foreground": "blue",
+          "template": "{{ .Path }}",
+          "properties": {
+            "style": "full"
+          }
+        },
+        {
+          "type": "git",
+          "style": "plain",
+          "foreground": "magenta",
+          "template": " {{ .Ref }}{{ .Working.String }}{{ if gt .Behind 0 }}-{{ .Behind }}{{ end }}{{ if gt .Ahead 0 }}+{{ .Ahead }}{{ end }}"
+        },
+        {
+          "type": "status",
+          "style": "plain",
+          "foreground": "red",
+          "template": " {{ .String }}",
+          "properties": {
+            "status_template": "{{ reason .Code }}"
+          }
+        },
+        {
+          "type": "executiontime",
+          "style": "plain",
+          "foreground": "green",
+          "template": " {{ .FormattedMs }}",
+          "properties": {
+            "threshold": 500
+          }
+        },
+        {
+          "type": "crystal",
+          "style": "plain",
+          "foreground": "yellow",
+          "template": " crystal:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        },
+        {
+          "type": "dart",
+          "style": "plain",
+          "foreground": "yellow",
+          "template": " dart:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        },
+        {
+          "type": "dotnet",
+          "style": "plain",
+          "foreground": "yellow",
+          "template": " dotnet:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        },
+        {
+          "type": "elixir",
+          "style": "plain",
+          "foreground": "yellow",
+          "template": " elixir:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        },
+        {
+          "type": "go",
+          "style": "plain",
+          "foreground": "yellow",
+          "template": " go:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        },
+        {
+          "type": "haskell",
+          "style": "plain",
+          "foreground": "yellow",
+          "template": " haskell:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        },
+        {
+          "type": "java",
+          "style": "plain",
+          "foreground": "yellow",
+          "template": " java:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        },
+        {
+          "type": "julia",
+          "style": "plain",
+          "foreground": "yellow",
+          "template": " julia:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        },
+        {
+          "type": "kotlin",
+          "style": "plain",
+          "foreground": "yellow",
+          "template": " kotlin:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        },
+        {
+          "type": "lua",
+          "style": "plain",
+          "foreground": "yellow",
+          "template": " lua:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        },
+        {
+          "type": "node",
+          "style": "plain",
+          "foreground": "yellow",
+          "template": " node:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        },
+        {
+          "type": "ocaml",
+          "style": "plain",
+          "foreground": "yellow",
+          "template": " ocaml:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        },
+        {
+          "type": "perl",
+          "style": "plain",
+          "foreground": "yellow",
+          "template": " perl:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        },
+        {
+          "type": "php",
+          "style": "plain",
+          "foreground": "yellow",
+          "template": " php:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        },
+        {
+          "type": "python",
+          "style": "plain",
+          "foreground": "yellow",
+          "template": " python:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        },
+        {
+          "type": "perl",
+          "style": "plain",
+          "foreground": "yellow",
+          "template": " perl:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        },
+        {
+          "type": "ruby",
+          "style": "plain",
+          "foreground": "yellow",
+          "template": " ruby:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        },
+        {
+          "type": "rust",
+          "style": "plain",
+          "foreground": "yellow",
+          "template": " rust:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        },
+        {
+          "type": "swift",
+          "style": "plain",
+          "foreground": "yellow",
+          "template": " swift:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        },
+        {
+          "type": "vala",
+          "style": "plain",
+          "foreground": "yellow",
+          "template": " vala:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "darkGray",
+          "template": "{{ if .Root }}$ {{ else }}> {{ end }}"
+        }
+      ]
+    }
+  ]
+}

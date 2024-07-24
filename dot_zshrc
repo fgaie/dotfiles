@@ -11,7 +11,6 @@ setopt appendhistory
 
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
-setopt autocd
 
 alias ls='exa'
 alias find='fd'
@@ -19,16 +18,6 @@ alias grep='rg'
 
 alias ll='ls -al'
 alias fzf='fzf-tmux -p'
-
-alias vimdiff='nvim -d'
-
-# oh-my-zsh
-plugins=(colored-man-pages)
-
-# powerlevel10k
-src ~/.p10k.zsh
-src ~/powerlevel10k/powerlevel10k.zsh-theme
-src /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # FZF
 fzf_base_command="fd -L --color=always"
@@ -46,15 +35,11 @@ export FZF_ALT_C_OPTS=$fzf_base_options
 export FZF_TMUX=1
 export FZF_TMUX_OPTS="-p"
 
-# cmake config
-export CMAKE_GENERATOR="Ninja"
-export CMAKE_EXPORT_COMPILE_COMMANDS="ON"
+src /usr/share/fzf/key-bindings.zsh
+src /usr/share/fzf/completion.zsh
 
 # editor
 export EDITOR="hx"
-
-src /usr/share/fzf/key-bindings.zsh
-src /usr/share/fzf/completion.zsh
 
 # opam config
 src /home/flo/.opam/opam-init/init.zsh
@@ -63,7 +48,9 @@ src /home/flo/.opam/opam-init/init.zsh
 src /usr/share/nvm/init-nvm.sh
 export PNPM_HOME="$HOME/.local/share/pnpm"
 
-export PATH="$PNPM_HOME:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/go/bin:$PATH"
+export PATH="$PNPM_HOME:$HOME/.local/bin:$HOME/bin:$HOME/.cargo/bin:$HOME/go/bin:$PATH"
+
+eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/config.json)"
 
 # direnv config
 _direnv_hook() {
