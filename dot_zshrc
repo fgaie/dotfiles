@@ -50,7 +50,15 @@ export PNPM_HOME="$HOME/.local/share/pnpm"
 
 export PATH="$PNPM_HOME:$HOME/.local/bin:$HOME/bin:$HOME/.cargo/bin:$HOME/go/bin:$PATH"
 
+# oh-my-zsh config
 eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/config.json)"
+
+# vulkan config
+export LD_LIBRARY_PATH="/usr/local/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+export VK_ADD_LAYER_PATH="/usr/local/share/vulkan/explicit_layer.d${VK_ADD_LAYER_PATH:+:$VK_ADD_LAYER_PATH}"
+if [ -n "${VK_LAYER_PATH-}" ]; then
+  unset VK_LAYER_PATH
+fi
 
 # direnv config
 _direnv_hook() {
