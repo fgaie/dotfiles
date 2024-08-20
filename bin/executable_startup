@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 waybar &
-keepassxc &
+proton-pass 2>&1 > /dev/null &
 syncthing --no-browser &
 mpd &
 mpDris2 &
