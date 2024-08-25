@@ -627,11 +627,6 @@
   :hook
   ((prog-mode text-mode) . rainbow-delimiters-mode))
 
-(use-package rainbow-identifiers
-  :straight t
-  :hook
-  (prog-mode . rainbow-identifiers-mode))
-
 (use-package rainbow-mode
   :straight t
   :blackout t
@@ -647,11 +642,6 @@
 
 (use-package scala-mode
   :straight t)
-
-(use-package sly
-  :straight t
-  :custom
-  (inferior-lisp-program "ccl"))
 
 (use-package tuareg
   :straight t
