@@ -383,16 +383,6 @@
   (push #'cape-dabbrev completion-at-point-functions)
   (push #'cape-file    completion-at-point-functions))
 
-;; (use-package catppuccin-theme
-;;   :straight t
-;;   :custom-face
-;;   (ansi-color-red ((t (:forgeground "#000000" :background "#f38ba8"))))
-;;   (ansi-color-green ((t (:forgeground "#000000" :background "#a6e3a1"))))
-;;   :custom
-;;   (catppuccin-flavor 'mocha)
-;;   :config
-;;   (load-theme 'catppuccin t))
-
 (use-package autothemer
   :straight t)
 
