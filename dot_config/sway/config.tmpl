@@ -17,9 +17,10 @@ set $right p
 set $term kitty tmux
 set $editor kitty tmux -c hx
 set $browser firefox
-set $menu rofi -show combi -combi-modes "drun,ssh" -modes combi
+# sh -l to start a login shell and source /etc/profile
+set $menu sh -lc 'rofi -show combi -combi-modes "drun,ssh" -modes combi'
 
-exec ~/bin/startup
+exec sh -l ~/bin/startup
 exec $term
 
 output * bg ~/Pictures/wp.* fill

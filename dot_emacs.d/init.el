@@ -695,3 +695,10 @@
   :blackout yas-minor-mode
   :config
   (yas-global-mode))
+
+(use-package geiser
+  :straight t)
+
+(use-package geiser-chicken
+  :straight t
+  :after geiser)
