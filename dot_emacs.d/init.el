@@ -82,15 +82,15 @@
 (use-package rose-pine-theme
   :straight (rose-pine-theme :type git :host github :repo "konrad1977/pinerose-emacs")
   :after autothemer
-  :config (load-theme 'rose-pine t))
+  :init (load-theme 'rose-pine t))
 
 (use-package rainbow-delimiters
   :straight t
-  :config (rainbow-delimiters-mode 1))
+  :init (rainbow-delimiters-mode 1))
 
 (use-package vertico
   :straight t
-  :config (vertico-mode 1)
+  :init (vertico-mode 1)
   :custom (vertico-cycle t))
 
 (use-package vertico-directory
@@ -109,7 +109,7 @@
 
 (use-package marginalia
   :straight t
-  :config (marginalia-mode)
+  :init (marginalia-mode)
   :bind (:map minibuffer-local-map
 	      ("M-a" . marginalia-cycle)))
 
@@ -127,7 +127,7 @@
   (corfu-cycle t)
   (corfu-auto t)
   (corfu-popupinfo-delay '0)
-  :config
+  :init
   (global-corfu-mode)
   (corfu-popupinfo-mode)
   :bind ("C-@" . completion-at-point))
@@ -135,11 +135,11 @@
 (use-package kind-icon
   :straight t
   :after corfu
-  :config (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+  :init (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
 (use-package cape
   :straight t
-  :config
+  :init
   (push #'cape-dabbrev completion-at-point-functions)
   (push #'cape-emoji completion-at-point-functions)
   (push #'cape-file completion-at-point-functions)
@@ -147,16 +147,16 @@
 
 (use-package ws-butler
   :straight t
-  :config (ws-butler-global-mode))
+  :init (ws-butler-global-mode))
 
 (use-package puni
   :straight t
-  :config (puni-global-mode 1)
+  :init (puni-global-mode 1)
   :bind ("C-*" . puni-expand-region))
 
 (use-package which-key
   :straight t
-  :config (which-key-mode 1))
+  :init (which-key-mode 1))
 
 (use-package helpful
   :straight t
@@ -182,3 +182,7 @@
   :bind
   ("C-<" . mc/mark-previous-like-this)
   ("C->" . mc/mark-next-like-this))
+
+(use-package rainbow-delimiters
+  :straight t
+  :init (rainbow-delimiters-mode 1))
