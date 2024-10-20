@@ -186,3 +186,7 @@
 (use-package rainbow-delimiters
   :straight t
   :init (rainbow-delimiters-mode 1))
+
+(use-package projectile
+  :straight t
+  :init (projectile-mode 1))
