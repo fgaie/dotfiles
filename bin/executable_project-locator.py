@@ -9,7 +9,7 @@ from typing import TypeVar
 
 T = TypeVar("T")
 def flatten(l: list[list[T]]) -> list[T]:
-    return functools.reduce(operator.iconcat, l)
+    return functools.reduce(operator.iconcat, l, [])
 
 
 def get_dirs(root: Path, name: str) -> list[Path]:

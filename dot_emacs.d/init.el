@@ -39,7 +39,7 @@
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-(set-face-font 'default "Iosevka Term SS01")
+(set-face-font 'default "Iosevka Term")
 
 (push '(alpha-background . 90) default-frame-alist)
 
@@ -66,7 +66,13 @@
   (interactive)
   (switch-to-buffer (other-buffer)))
 
-(keymap-global-set "C-," 'duplicate-line)
+(defun flo/duplicate-line (&optional n)
+  "Duplicate the current line"
+  (interactive "p")
+  (duplicate-line n)
+  (next-line n))
+
+(keymap-global-set "C-," 'flo/duplicate-line)
 (keymap-global-set "C-c c" 'compile)
 (keymap-global-set "C-c r" 'recompile)
 (keymap-global-set "C-x k" 'kill-current-buffer)
