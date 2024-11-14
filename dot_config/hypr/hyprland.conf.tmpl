@@ -163,11 +163,19 @@ misc {
 
 # https://wiki.hyprland.org/Configuring/Variables/#input
 input {
+    {{ if eq .chezmoi.hostname "desk" }}
     kb_layout = us,fr
     kb_variant = dvp,bepo
     kb_model =
     kb_options = grp:shifts_toggle
     kb_rules =
+    {{ else }}
+    kb_layout = us-flo,fr
+    kb_variant = ,bepo
+    kb_model =
+    kb_options = grp:shifts_toggle
+    kb_rules =
+    {{ end }}
 
     follow_mouse = 1
     focus_on_close = 1
