@@ -1,0 +1,89 @@
+/* -*- mode: css -*- */
+@import "./rose-pine.css";
+
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "Iosevka Term SS01", sans-serif;
+  font-size: 13px;
+  min-height: 0;
+
+  background: transparent;
+  color: inherit;
+}
+
+tooltip {
+  background: alpha(#{{ .theme.bg }}, 0.9);
+  color: #{{ .theme.fg }};
+}
+
+#waybar {
+  background: alpha(#{{ .theme.bg }}, 0.9);
+  color: #{{ .theme.fg }};
+  border: none;
+  border-radius: 0;
+}
+
+#workspaces button {
+  background: #{{ .theme.bg1 }};
+  color: #{{ .theme.fg1 }};
+  border: none;
+}
+
+#workspaces button.focused, #workspaces button.active {
+  background: #{{ .theme.bg1 }};
+  color: #{{ .theme.fg }};
+}
+
+#window {
+  background: #{{ .theme.bg1 }};
+  color: #{{ .theme.fg }};
+}
+
+#waybar.empty #window {
+  background: transparent;
+}
+
+label {
+  padding: 5px 10px;
+}
+
+#mpd {
+  color: #{{ .colors.red }};
+  background: alpha(#{{ .colors.red }}, 0.07)
+}
+
+#network {
+  color: #{{ .colors.green }};
+  background: alpha(#{{ .colors.green }}, 0.07)
+}
+
+#cpu {
+  color: #{{ .colors.yellow }};
+  background: alpha(#{{ .colors.yellow }}, 0.07)
+}
+
+#memory {
+  color: #{{ .colors.red }};
+  background: alpha(#{{ .colors.red }}, 0.07)
+}
+
+#disk {
+  color: #{{ .colors.cyan }};
+  background: alpha(#{{ .colors.cyan }}, 0.07)
+}
+
+#battery {
+  color: #{{ .colors.blue }};
+  background: alpha(#{{ .colors.blue }}, 0.07)
+}
+
+#language {
+  color: #{{ .colors.magenta }};
+  background: alpha(#{{ .colors.magenta }}, 0.07)
+}
+
+#clock {
+  color: #{{ .colors.red }};
+  background: alpha(#{{ .colors.red }}, 0.07)
+}

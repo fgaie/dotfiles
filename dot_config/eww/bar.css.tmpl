@@ -1,0 +1,43 @@
+/* -*- mode: css -*- */
+
+.bar {
+    background-color: alpha(#{{ .theme.bg }}, {{ .theme.alpha }});
+    color: #{{ .theme.fg }};
+    border: {{ .border.size }}px solid #{{ .theme.border }};
+    border-radius: {{ .border.radius }}px;
+
+    margin: {{ .theme.spacing }}px;
+    margin-right: 0;
+
+    min-width: 2.5em;
+}
+
+.workspaces {
+    border-bottom: {{ .border.size }}px solid #{{ .theme.border }};
+}
+
+.workspace {
+    padding: {{ .theme.spacing }}px;
+    background-color: #{{ .theme.bg2 }};
+}
+
+.workspaces > *:first-child > * {
+    border-radius: {{ div .border.radius 2 }}px {{ div .border.radius 2 }}px 0 0;
+}
+
+.workspace.selected {
+    background-color: #{{ .theme.hlhi }};
+}
+
+.workspace:hover {
+    background-color: #{{ .theme.bg1 }};
+}
+
+.window {
+    padding: {{ .theme.spacing }}px;
+}
+
+.date, .time {
+    padding: {{ .theme.spacing }}px;
+    border-top: {{ .border.size }}px solid #{{ .theme.border }};
+}

@@ -1,0 +1,12 @@
+/* -*- mode: css -*- */
+
+.volume {
+    background-color: alpha(#{{ .theme.bg }}, {{ .theme.alpha }});
+    color: #{{ .theme.fg }};
+    border: {{ .border.size }}px solid #{{ .theme.border }};
+    border-radius: {{ .border.radius }}px;
+
+    margin: {{ .theme.spacing }}px;
+
+    padding: {{ .theme.spacing }}px;
+}

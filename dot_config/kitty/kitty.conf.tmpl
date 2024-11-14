@@ -1,0 +1,80 @@
+# -*- mode: conf -*-
+
+font_family      Iosevka Term SS01
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+
+font_size 11.0
+
+# symbol_map U+E0A0-U+E0A3,U+E0C0-U+E0C7 PowerlineSymbols
+# narrow_symbols narrow_symbols U+E0A0-U+E0A3,U+E0C0-U+E0C7 1
+
+disable_ligatures cursor
+
+cursor_shape block
+
+url_style              double
+show_hyperlink_targets yes
+
+strip_trailing_spaces smart
+
+focus_follows_mouse yes
+
+enable_audio_bell    no
+visual_bell_duration 0.1
+
+tab_bar_style       powerline
+tab_powerline_style slanted
+
+background_opacity {{ .theme.alpha }}
+
+foreground               #{{ .theme.fg }}
+background               #{{ .theme.bg }}
+selection_foreground     #{{ .theme.fg }}
+selection_background     #{{ .theme.bg2 }}
+
+cursor                   #{{ .theme.fg2 }}
+cursor_text_color        #{{ .theme.bg1 }}
+
+url_color                #{{ .theme.primary }}
+
+active_tab_foreground    #{{ .theme.fg }}
+active_tab_background    #{{ .theme.bg2 }}
+inactive_tab_foreground  #{{ .theme.fg }}
+inactive_tab_background  #{{ .theme.bg1 }}
+
+active_border_color      #{{ .theme.primary }}
+inactive_border_color    #{{ .theme.border }}
+
+# black
+color0   #{{ .colors.black }}
+color8   #{{ .theme.hlhi }}
+
+# red
+color1   #{{ .colors.red }}
+color9   #{{ .colors.red }}
+
+# green
+color2   #{{ .colors.green }}
+color10  #{{ .colors.green }}
+
+# yellow
+color3   #{{ .colors.yellow }}
+color11  #{{ .colors.yellow }}
+
+# blue
+color4   #{{ .colors.blue }}
+color12  #{{ .colors.blue }}
+
+# magenta
+color5   #{{ .colors.magenta }}
+color13  #{{ .colors.magenta }}
+
+# cyan
+color6   #{{ .colors.cyan }}
+color14  #{{ .colors.cyan }}
+
+# white
+color7   #{{ .colors.white }}
+color15  #{{ .colors.white }}

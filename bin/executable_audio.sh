@@ -27,17 +27,14 @@ case "$1" in
 
     play-pause)
         playerctl play-pause
-        show_audio
         ;;
 
     previous)
         playerctl previous
-        show_audio
         ;;
 
     next)
         playerctl next
-        show_audio
         ;;
 
     status)
@@ -45,6 +42,7 @@ case "$1" in
         ;;
 
     statusf)
+        status
         status --follow
         ;;
 

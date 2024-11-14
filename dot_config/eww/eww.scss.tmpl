@@ -1,0 +1,33 @@
+/* -*- mode: scss -*- */
+@use "bar.css";
+@use "volume.css";
+
+.background {
+    background-color: transparent;
+}
+
+progressbar {
+    min-height: 1em;
+    min-width: 1em;
+}
+
+progressbar > trough {
+    background-color: #{{ .theme.bg1 }};
+
+    border: none;
+    border-radius: {{ .border.radius }}px;
+
+    min-height: 1em;
+    min-width: 1em;
+
+}
+
+progressbar > trough > progress {
+    border: none;
+    border-radius: {{ .border.radius }}px;
+
+    min-height: 1em;
+    min-width: 1em;
+
+    background-color: #{{ .theme.primary }};
+}

@@ -1,0 +1,30 @@
+;; -*- mode: yuck -*-
+
+(deflisten current-music :initial "{}"
+           `audio.sh statusf`)
+
+(defvar volume 0)
+
+(defwindow volumemenu
+           :monitor 0
+           :stacking "overlay"
+           :exclusive false
+           :geometry (geometry
+                      :width "80"
+                      :height "160"
+                      :anchor "center right")
+           (volume :vol volume))
+
+(defwidget volume [vol]
+           (box :class "volume"
+                :orientation "v"
+                :spacing 8
+                :space-evenly false
+                (progress :width 0
+                          :halign "center"
+                          :vexpand true
+                          :flipped true
+                          :value volume
+                          :orientation "v")
+
+                (label :text "${vol}%")))

@@ -1,3 +1,5 @@
+;; -*- mode: emacs-lisp -*-
+
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name
@@ -43,7 +45,7 @@
 
 (set-face-font 'default "Iosevka Term")
 
-(push '(alpha-background . 90) default-frame-alist)
+(push '(alpha-background . {{ mulf .theme.alpha 100 | floor }}) default-frame-alist)
 
 ;; language ervers
 (setq eglot-sync-connect nil)

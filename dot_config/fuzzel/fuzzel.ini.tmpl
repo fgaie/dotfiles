@@ -1,0 +1,30 @@
+# -*- mode: conf -*-
+
+font=Iosevka,monospace
+use-bold=yes
+placeholder="search"
+prompt="> "
+match-counter=yes
+terminal=kitty -e
+
+width=80
+horizontal-pad=8
+vertical-pad=8
+inner-pad=8
+
+[colors]
+background={{ .theme.bg }}{{ .theme.alphacss }}
+text={{ .theme.fg }}ff
+prompt={{ .theme.fg2 }}ff
+placeholder={{ .theme.fg2 }}ff
+input={{ .theme.fg }}ff
+match={{ .theme.primary }}ff
+selection={{ .theme.bg1 }}ff
+selection-text={{ .theme.fg }}ff
+selection-match={{ .theme.primary }}ff
+counter={{ .theme.bg1 }}ff
+border={{ .theme.border }}ff
+
+[border]
+width={{ .border.size }}
+radius={{ .border.radius }}
