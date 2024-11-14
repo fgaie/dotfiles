@@ -19,12 +19,13 @@ set $editor kitty tmux -c hx
 set $browser firefox
 # sh -l to start a login shell and source /etc/profile
 set $menu sh -cl fuzzel
+set $audio ~/bin/audio.sh
 
 exec sh -l ~/bin/startup
 exec $term
 
-output DP-3 pos 0 0
 output HDMI-A-1 pos 1920 0
+output DP-3 pos 0 0
 output * bg ~/Pictures/wp.* fill
 output * adaptive_sync on
 
@@ -134,13 +135,13 @@ bindcode {
 }
 
 bindsym {
-    XF86AudioPlay exec playerctl play-pause
-    XF86AudioPrev exec playerctl previous
-    XF86AudioNext exec playerctl next
+    XF86AudioPlay exec $audio play-pause
+    XF86AudioPrev exec $audio previous
+    XF86AudioNext exec $audio next
     
-    XF86AudioRaiseVolume exec pamixer -i 5
-    XF86AudioLowerVolume exec pamixer -d 5
-    XF86AudioMute exec pamixer -t
+    XF86AudioRaiseVolume exec $audio vol+
+    XF86AudioLowerVolume exec $audio vol-
+    XF86AudioMute exec $audio mute
     
     XF86MonBrightnessUp exec brightnessctl s 5%+
     XF86MonBrightnessDown exec brightnessctl s 5%-

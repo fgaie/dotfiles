@@ -1,12 +1,8 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-  "version": 2,
-  "final_space": false,
-  "shell_integration": true,
-  "enable_cursor_positioning": true,
   "transient_prompt": {
-    "foreground": "darkGray",
-    "template": "> "
+    "template": "> ",
+    "foreground": "darkGray"
   },
   "blocks": [
     {
@@ -14,172 +10,175 @@
       "alignment": "left",
       "segments": [
         {
-          "type": "path",
-          "style": "plain",
-          "foreground": "blue",
-          "template": "{{ .Path }}",
           "properties": {
             "style": "full"
-          }
+          },
+          "style": "plain",
+          "template": "{{ .Path }}",
+          "foreground": "blue",
+          "type": "path"
         },
         {
-          "type": "git",
           "style": "plain",
+          "template": " {{ .Ref }}{{ .Working.String }}{{ if gt .Behind 0 }}-{{ .Behind }}{{ end }}{{ if gt .Ahead 0 }}+{{ .Ahead }}{{ end }}",
           "foreground": "magenta",
-          "template": " {{ .Ref }}{{ .Working.String }}{{ if gt .Behind 0 }}-{{ .Behind }}{{ end }}{{ if gt .Ahead 0 }}+{{ .Ahead }}{{ end }}"
+          "type": "git"
         },
         {
-          "type": "status",
-          "style": "plain",
-          "foreground": "red",
-          "template": " {{ .String }}",
           "properties": {
             "status_template": "{{ reason .Code }}"
-          }
+          },
+          "style": "plain",
+          "template": " {{ .String }}",
+          "foreground": "red",
+          "type": "status"
         },
         {
-          "type": "executiontime",
-          "style": "plain",
-          "foreground": "green",
-          "template": " {{ .FormattedMs }}",
           "properties": {
             "threshold": 500
-          }
+          },
+          "style": "plain",
+          "template": " {{ .FormattedMs }}",
+          "foreground": "green",
+          "type": "executiontime"
         },
         {
-          "type": "crystal",
           "style": "plain",
+          "template": " crystal:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
           "foreground": "yellow",
-          "template": " crystal:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+          "type": "crystal"
         },
         {
-          "type": "dart",
           "style": "plain",
+          "template": " dart:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
           "foreground": "yellow",
-          "template": " dart:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+          "type": "dart"
         },
         {
-          "type": "dotnet",
           "style": "plain",
+          "template": " dotnet:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
           "foreground": "yellow",
-          "template": " dotnet:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+          "type": "dotnet"
         },
         {
-          "type": "elixir",
           "style": "plain",
+          "template": " elixir:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
           "foreground": "yellow",
-          "template": " elixir:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+          "type": "elixir"
         },
         {
-          "type": "go",
           "style": "plain",
+          "template": " go:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
           "foreground": "yellow",
-          "template": " go:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+          "type": "go"
         },
         {
-          "type": "haskell",
           "style": "plain",
+          "template": " haskell:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
           "foreground": "yellow",
-          "template": " haskell:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+          "type": "haskell"
         },
         {
-          "type": "java",
           "style": "plain",
+          "template": " java:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
           "foreground": "yellow",
-          "template": " java:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+          "type": "java"
         },
         {
-          "type": "julia",
           "style": "plain",
+          "template": " julia:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
           "foreground": "yellow",
-          "template": " julia:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+          "type": "julia"
         },
         {
-          "type": "kotlin",
           "style": "plain",
+          "template": " kotlin:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
           "foreground": "yellow",
-          "template": " kotlin:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+          "type": "kotlin"
         },
         {
-          "type": "lua",
           "style": "plain",
+          "template": " lua:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
           "foreground": "yellow",
-          "template": " lua:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+          "type": "lua"
         },
         {
-          "type": "node",
           "style": "plain",
+          "template": " node:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
           "foreground": "yellow",
-          "template": " node:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+          "type": "node"
         },
         {
-          "type": "ocaml",
           "style": "plain",
+          "template": " ocaml:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
           "foreground": "yellow",
-          "template": " ocaml:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+          "type": "ocaml"
         },
         {
-          "type": "perl",
           "style": "plain",
+          "template": " perl:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
           "foreground": "yellow",
-          "template": " perl:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+          "type": "perl"
         },
         {
-          "type": "php",
           "style": "plain",
+          "template": " php:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
           "foreground": "yellow",
-          "template": " php:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+          "type": "php"
         },
         {
-          "type": "python",
           "style": "plain",
+          "template": " python:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
           "foreground": "yellow",
-          "template": " python:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+          "type": "python"
         },
         {
-          "type": "perl",
           "style": "plain",
+          "template": " perl:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
           "foreground": "yellow",
-          "template": " perl:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+          "type": "perl"
         },
         {
-          "type": "ruby",
           "style": "plain",
+          "template": " ruby:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
           "foreground": "yellow",
-          "template": " ruby:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+          "type": "ruby"
         },
         {
-          "type": "rust",
           "style": "plain",
+          "template": " rust:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
           "foreground": "yellow",
-          "template": " rust:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+          "type": "rust"
         },
         {
-          "type": "swift",
           "style": "plain",
+          "template": " swift:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
           "foreground": "yellow",
-          "template": " swift:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+          "type": "swift"
         },
         {
-          "type": "vala",
           "style": "plain",
+          "template": " vala:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
           "foreground": "yellow",
-          "template": " vala:{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+          "type": "vala"
         }
       ]
     },
     {
       "type": "prompt",
       "alignment": "left",
-      "newline": true,
       "segments": [
         {
-          "type": "text",
           "style": "plain",
+          "template": "{{ if .Root }}$ {{ else }}> {{ end }}",
           "foreground": "darkGray",
-          "template": "{{ if .Root }}$ {{ else }}> {{ end }}"
+          "type": "text"
         }
-      ]
+      ],
+      "newline": true
     }
-  ]
+  ],
+  "version": 3,
+  "shell_integration": true,
+  "enable_cursor_positioning": true
 }

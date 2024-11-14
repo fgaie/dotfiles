@@ -1,0 +1,206 @@
+#!/bin/sh
+#| -*- scheme -*-
+exec csi -s "$0" "$@"
+|#
+
+(import (scheme)
+	(srfi-13)
+
+	(chicken file posix) ;
+	(chicken file)
+	(chicken format)
+	(chicken io)
+	(chicken pathname)
+	(chicken process)
+	(chicken process-context)
+	(chicken port)
+	(chicken string)
+	(chicken time posix)
+	(chicken type)
+
+	(getopt-long))
+
+(: notf (('a -> boolean) --> ('a -> boolean)))
+(define (notf p)
+  (lambda xs (not (apply p xs))))
+
+(: andf (#!rest ('a -> boolean) --> ('a -> boolean)))
+(define (andf . fs)
+  (lambda xs
+    (foldl
+     (lambda (acc f) (and acc (apply f xs)))
+     #t fs)))
+
+(: orf (#!rest ('a -> boolean) --> ('a -> boolean)))
+(define (orf . fs)
+  (lambda xs
+    (foldl
+     (lambda (acc f) (or acc (apply f xs)))
+     #t fs)))
+
+(: apply1 (('a 'b -> 'c) 'a --> ('b -> 'c)))
+(define (apply1 f x)
+  (lambda xs (apply f (cons x xs))))
+
+(: starts-with? (string string --> boolean))
+(define (starts-with? needle hay)
+  (and (>= (string-length hay) (string-length needle))
+       (string=? (substring hay 0 (string-length needle)) needle)))
+
+(: ask (string #!optional string -> (or string eof)))
+(define (ask query #!optional (info ""))
+  (newline)
+  (print query)
+  (display info)
+  (display "> ")
+  (read-line))
+
+(: ask-orelse (( -> string) string #!optional string -> string))
+(define (ask-orelse else query #!optional (info ""))
+  (let ((res (ask query info)))
+    (if (eof-object? res)
+	(else)
+	res)))
+
+;;; app specific
+
+;; globals
+(define arguments
+  (getopt-long (command-line-arguments)
+	       `((help
+		  (single-char #\h)
+		  (value #f))
+
+		 (output
+		  (single-char #\o)
+		  (value (optional UNUSED)))
+
+		 (ignore
+		  (single-char #\i)
+		  (value (optional UNUSED))))))
+
+(: output-dir string)
+(define output-dir
+  (let ((? (assq 'output arguments)))
+    (if ?
+	(cdr ?)
+	"./tagged")))
+
+(: ignore-file string)
+(define ignore-file
+  (let ((? (assq 'ignore arguments)))
+    (if ?
+	(cdr ?)
+	"./.tags-ignore")))
+
+(: ignored (list-of string))
+(define ignored
+  (if (file-exists? ignore-file)
+      (with-input-from-file ignore-file
+	(lambda () (read)))
+      '()))
+
+(: ignored? (string -> boolean))
+(define (ignored? file)
+  (member file ignored))
+
+(: ignore (string -> undefined))
+(define (ignore file)
+  (set! ignored (cons file ignored))
+  (with-output-to-file ignore-file
+    (lambda () (write ignored))))
+
+;; functions
+(: flo/make-name
+   (string integer string string #!optional integer --> string))
+(define (flo/make-name dir time tags ext #!optional (count 0))
+  (let ((time-s (time->string (seconds->local-time time)
+			      "%Y-%m-%dT%H-%M-%S")))
+    (make-pathname
+     dir
+     (with-output-to-string
+       (lambda ()
+	 (display time-s)
+
+	 (unless (= count 0)
+	   (display " ")
+	   (display "(")
+	   (display count)
+	   (display ")"))
+
+	 (unless (string=? tags "")
+	   (display " -- ")
+	   (display tags))))
+     ext)))
+
+(: flo/rename-file (string integer string --> undefined))
+(define (flo/rename-file path time tags)
+  (let* ((extension (pathname-extension path)))
+    (let loop ((i 0))
+      (let ((new-path
+	     (flo/make-name output-dir time tags extension i)))
+	(if (file-exists? new-path)
+	    (loop (+ i 1))
+	    (begin
+	      (rename-file path new-path)
+	      (print "renamed to " new-path)))))))
+
+(: flo/show-image-inline (string --> undefined))
+(define (flo/show-image-inline path)
+  (let*-values (((pid) (process-run
+			"kitty"
+			(list "+kitten" "icat" "--background" "black"
+			      "--no-trailing-newline" path)))
+		((pid ok code) (process-wait pid)))
+    (void)))
+
+(: flo/show-image-external (string --> undefined))
+(define (flo/show-image-external path)
+  (process-run "qimgv" (list path)))
+
+(: flo/handle-file (string --> undefined))
+(define (flo/handle-file path)
+  (newline) (newline)
+  (print "treating " path)
+  (print "created " (seconds->string (file-modification-time path)))
+
+  (let loop ()
+    (let ((action
+	   (ask-orelse exit
+	    "what to do? (skip (default) / view inline / view external / add / ignore / delete / quit)"
+	    "[S/vi/ve/a/i/d/q] ")))
+      (cond ((or (string=? action "") (starts-with? "s" action)) #t)
+	    ((starts-with? "q" action) #f)
+	    ((starts-with? "i" action)
+	     (ignore path)
+	     #t)
+	    ((starts-with? "vi" action)
+	     (flo/show-image-inline path)
+	     (loop))
+	    ((starts-with? "ve" action)
+	     (flo/show-image-external path)
+	     (loop))
+	    ((starts-with? "a" action)
+	     (let ((tags (ask-orelse exit
+				     "file tags (space separated):")))
+	       (flo/rename-file
+		path
+		(file-modification-time path)
+		(string-trim-both tags))))
+	    ((starts-with? "d" action)
+	     (delete-file path)
+	     (print "deleted " path)
+	     #t)
+	    (else
+	     (printf "Unrecognised action: ~s" action)
+	     (loop))))))
+
+(for-each (lambda (arg)
+	    (find-files arg
+			test:(andf
+			      (notf directory?)
+			      (notf (apply1 substring=? output-dir))
+			      (notf ignored?))
+			action:(lambda (file res)
+				 (and res (flo/handle-file file)))))
+	  (cdr (assq '@ arguments)))

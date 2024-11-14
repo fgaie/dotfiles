@@ -37,6 +37,8 @@
 (setq tab-always-indent 'complete)
 (setq make-backup-files nil)
 
+(setq-default indent-tabs-mode nil)
+
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (set-face-font 'default "Iosevka Term")

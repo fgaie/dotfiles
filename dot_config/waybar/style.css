@@ -27,7 +27,7 @@ tooltip {
   border: none;
 }
 
-#workspaces button.focused {
+#workspaces button.focused, #workspaces button.active {
   background: @overlay;
   color: @text;
 }

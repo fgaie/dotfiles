@@ -1,1 +1,58 @@
-config.json
+{
+  "layer": "top",
+  "margin-top": 10,
+  "margin-left": 10,
+  "margin-right": 10,
+  "margin-bottom": 0,
+  "reload-style-on-change": true,
+  "modules-left": [
+    "hyprland/workspaces",
+    "sway/workspaces",
+  ],
+  "modules-center": [
+    "hyprland/window",
+    "sway/window"
+  ],
+  "modules-right": [
+    "mpd",
+    "network",
+    "cpu",
+    "memory",
+    "disk",
+    "battery",
+    "sway/language",
+    "clock"
+  ],
+  "mpd": {
+    "format": "{stateIcon}{artist} - {title}",
+    "format-stopped": "",
+    "format-disconnected": "",
+    "tooltip-format": "mpc: {artist} - {album} - {title} [{songPosition}/{queueLength}] ({volume}%)",
+    "on-click": "mpc toggle",
+    "on-click-right": "mpc stop",
+    "on-scroll-up": "mpc volume +2",
+    "on-scroll-down": "mpc volume -2",
+    "state-icons": {
+      "playing": "",
+      "paused": "(P) "
+    }
+  },
+  "network": {
+    "format": "{essid}"
+  },
+  "cpu": {
+    "format": "CPU {usage}%"
+  },
+  "memory": {
+    "format": "RAM {percentage}%"
+  },
+  "disk": {
+    "format": "/ {percentage_used}%"
+  },
+  "sway/language": {
+    "format": "{short} {variant}"
+  },
+  "clock": {
+    "format": "{:%Y-%m-%d %R}"
+  }
+}
