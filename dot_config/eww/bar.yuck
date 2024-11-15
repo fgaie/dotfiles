@@ -1,10 +1,10 @@
 ;; -*- mode: yuck -*-
 
 (deflisten hypr-monitors :initial "[]"
-           `hyprland.sh monitorsf`)
+           `/home/flo/bin/hyprland.sh monitorsf`)
 
-(deflisten hypr-workspaces :initial "[{}]"
-           `hyprland.sh workspacesf`)
+(deflisten hypr-workspaces :initial "[]"
+           `/home/flo/bin/hyprland.sh workspacesf`)
 
 (defpoll datetime :interval "1s" :initial "0"
          `date +%s`)
@@ -34,16 +34,16 @@
 (defwidget bar [id monitors workspaces]
            (box :class "bar"
                 (overlay
-                         (box :orientation "v" :valign "start" :space-evenly false
-                              (workspaces :workspaces {jq(workspaces, "map(select(.id > 0 and .monitorID == ${id}))")}
-                                          :current {jq(monitors, ".[] | select(.id == ${id})").activeWorkspace.id}))
+                 (box :orientation "v" :valign "start" :space-evenly false
+                      (workspaces :workspaces {jq(workspaces, "map(select(.id > 0 and .monitorID == ${id}))")}
+                                  :current {jq(monitors, ".[] | select(.id == ${id})").activeWorkspace.id}))
 
-                         (box :orientation "v" :valign "center" :space-evenly false
-                              (window :workspaces {jq(workspaces, "map(select(.id > 0 and .monitorID == ${id}))")}
-                                      :current {jq(monitors, ".[] | select(.id == ${id})").activeWorkspace.id}))
+                 (box :orientation "v" :valign "center" :space-evenly false
+                      (window :workspaces {jq(workspaces, "map(select(.id > 0 and .monitorID == ${id}))")}
+                              :current {jq(monitors, ".[] | select(.id == ${id})").activeWorkspace.id}))
 
-                         (box :orientation "v" :valign "end" :space-evenly false
-                              (datetime :datetime datetime)))))
+                 (box :orientation "v" :valign "end" :space-evenly false
+                      (datetime :datetime datetime)))))
 
 (defwidget workspaces [workspaces current]
            (box :class "workspaces"
