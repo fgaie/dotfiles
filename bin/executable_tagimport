@@ -6,17 +6,18 @@ exec csi -s "$0" "$@"
 (import (scheme)
 	(srfi-13)
 
-	(chicken file posix) ;
 	(chicken file)
 	(chicken format)
 	(chicken io)
 	(chicken pathname)
+	(chicken port)
 	(chicken process)
 	(chicken process-context)
-	(chicken port)
 	(chicken string)
 	(chicken time posix)
 	(chicken type)
+        (chicken file posix)
+        (chicken tcp)
 
 	(getopt-long))
 
@@ -195,12 +196,19 @@ exec csi -s "$0" "$@"
 	     (printf "Unrecognised action: ~s" action)
 	     (loop))))))
 
-(for-each (lambda (arg)
+(: each-file ((string -> boolean) --> undefined))
+(define (each-file f)
+  (for-each (lambda (arg)
 	    (find-files arg
 			test:(andf
 			      (notf directory?)
 			      (notf (apply1 substring=? output-dir))
 			      (notf ignored?))
 			action:(lambda (file res)
-				 (and res (flo/handle-file file)))))
-	  (cdr (assq '@ arguments)))
+				 (and res (f file)))))
+	  (cdr (assq '@ arguments))))
+
+(define (do-cli)
+  (each-file flo/handle-file))
+
+(do-cli)

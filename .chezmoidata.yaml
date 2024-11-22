@@ -27,5 +27,5 @@ colors:
   white: "e0def4"
 
 border:
-  size: 4
-  radius: 8
+  size: 2
+  radius: 2
