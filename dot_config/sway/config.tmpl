@@ -1,35 +1,16 @@
 # vim: ft=conf
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
 
-### Variables
-set $mod Mod4
-
-set $left  j
-set $down  c
-set $up    v
-set $right p
-
-# Apps
 set $term kitty tmux
-set $editor kitty tmux -c hx
 set $browser firefox
-# sh -l to start a login shell and source /etc/profile
 set $menu sh -cl fuzzel
 set $audio ~/bin/audio.sh
 
 exec sh -l ~/bin/startup
-exec $term
 
 output HDMI-A-1 pos 1920 0
 output DP-3 pos 0 0
 output * bg ~/Pictures/wp.* fill
 output * adaptive_sync on
-
-### Input configuration
 
 {{- if eq .chezmoi.hostname "desk" }}
 input "type:keyboard" {
@@ -53,53 +34,39 @@ input "type:touchpad" {
     tap enabled
 }
 
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
+set $mod Mod4
 
-# Drag floating windows by holding down $mod and left mouse button.
-# Resize them with right mouse button + $mod.
-# Despite the name, also works for non-floating windows.
-# Change normal to inverse to use left mouse button for resizing and right
-# mouse button for dragging.
 floating_modifier $mod normal
 
-### Key bindings
 bindcode {
     # comments based on qwerty layout
     # space
     $mod+65 exec $menu
 
-    # enter
+    # enter e b
     $mod+36 exec $term
-    # e
     $mod+26 exec $editor
-    # b
     $mod+56 exec $browser
 
     # w
     $mod+25 kill
 
-    # q
+    # q q
     $mod+27 reload
-    # x
     $mod+Mod1+53 exit
 
-    # j
+    # jkl;
     $mod+44 focus left
-    # k
     $mod+45 focus down
-    # l
     $mod+46 focus up
-    # ;
     $mod+47 focus right
 
-    # Move the focused window with the same, but add Shift
+    # JKL:
     $mod+Shift+44 move left
     $mod+Shift+45 move down
     $mod+Shift+46 move up
     $mod+Shift+47 move right
 
-    # Workspaces:
     # 1234567890-
     $mod+10 workspace 1
     $mod+11 workspace 2
@@ -113,8 +80,7 @@ bindcode {
     $mod+19 workspace 10
     $mod+20 scratchpad show
 
-    # Move focused container to workspace
-    # 1234567890-
+    # shift+{1234567890-}
     $mod+shift+10 move container to workspace 1
     $mod+shift+11 move container to workspace 2
     $mod+shift+12 move container to workspace 3
@@ -127,10 +93,8 @@ bindcode {
     $mod+shift+19 move container to workspace 10
     $mod+shift+20 move scratchpad
 
-    # Switch the current container between different layout styles
-    # f
+    # f space
     $mod+41 fullscreen
-    # space
     $mod+Shift+65 floating toggle
 }
 
@@ -147,32 +111,15 @@ bindsym {
     XF86MonBrightnessDown exec brightnessctl s 5%-
 }
 
-# Status Bar:
-# Read `man 5 sway-bar` for more information about this section.
-# bar {
-#     position bottom
-
-#     # When the status_command prints a new line to stdout, swaybar updates.
-#     # The default just shows the current date and time.
-#     status_command while date +'%Y-%m-%d %H:%M'; do sleep 1; done
-
-#     colors {
-#         statusline #e0def4
-#         background #191724
-
-#         # border background text
-#         focused_workspace #ebbcba #ebbcba #191724
-#         inactive_workspace #1f1d2e #1f1d2e #e0def4
-#     }
-# }
-
-default_border none
-default_floating_border none
-titlebar_padding 1
-titlebar_border_thickness 0
+default_border pixel {{ .border.size }}
+default_floating_border pixel {{ .border.size }}
 
 gaps inner {{ .theme.spacing }}px
 gaps outer 0px
 smart_gaps off
+
+#                border                background       text
+client.focused   #{{ .theme.primary }} #{{ .theme.bg }} #{{ .theme.fg }} #{{ .theme.primary }} #{{ .theme.primary }}
+client.unfocused #{{ .theme.border }}  #{{ .theme.bg }} #{{ .theme.fg }} #{{ .theme.primary }} #{{ .theme.border }}
 
 include /etc/sway/config.d/*
